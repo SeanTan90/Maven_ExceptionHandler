@@ -3,6 +3,7 @@ package assignment.exceptionhandler.utility;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -19,17 +20,17 @@ import assignment.exceptionhandler.ProjectDetails;
 import assignment.exceptionhandler.Storage;
 
 public class xmlReader {
-	
+		
 	private static Document doc;
-	Storage store;
-	String file;
+	static Storage store;
+	static String file;
 	
 	public xmlReader(String file, Storage store) {
 		this.store = store;
 		this.file = file;
 	}
 	
-	public void parseXmlFile(){
+	public static void parseXmlFile(){
 		//get the factory
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
@@ -44,16 +45,19 @@ public class xmlReader {
 		parseDocument();
 
 		}catch(ParserConfigurationException pce) {
-			pce.printStackTrace();
+			System.out.println(pce.getMessage());
+			//pce.printStackTrace();
 		}catch(SAXException se) {
-			se.printStackTrace();
+			System.out.println(se.getMessage());
+			//se.printStackTrace();
 		}catch(IOException ioe) {
-			ioe.printStackTrace();
+			System.out.println(ioe.getMessage());
+			//ioe.printStackTrace();
 		}
 	}
 
 	
-	private void parseDocument(){
+	private static void parseDocument(){
 
 		Element docEle = doc.getDocumentElement();
 
