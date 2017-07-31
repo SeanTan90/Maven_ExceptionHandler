@@ -19,7 +19,6 @@ public class Service implements IService {
 	@Override
 	public String HandleAction(String projectName, String moduleName, Exception e) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		String exceptionType = e.getClass().getName();
-		//StringBuilder sb = new StringBuilder(40);
 
 		ProjectDetails pd = new ProjectDetails(projectName, moduleName, exceptionType); // key for searching the hashmap in store
 		Set<ActionDetails> actionSet = store.getMap().get(pd);
@@ -30,7 +29,6 @@ public class Service implements IService {
 			Action a = (Action)o;
 			a.executeAction(actDtls.getAttributeDtls());
 			
-			//sb.append(actDtls.getActionName() + actDtls.getAttributeDtls());
 			System.out.println(actDtls.getActionName() + actDtls.getAttributeDtls());
 		}
 		

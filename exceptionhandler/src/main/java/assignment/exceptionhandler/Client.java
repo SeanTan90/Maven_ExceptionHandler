@@ -9,7 +9,7 @@ public class Client {
 		String file = "D:\\Users\\seantan\\Desktop\\Playground\\exceptionlibrary.xml";
 		
 		Service service = new Service(file);
-		service.HandleAction("bank", "withdraw", new ArithmeticException());	
+		System.out.println(service.HandleAction("bank", "withdraw", new ArithmeticException()));	
 	}
 
 }
